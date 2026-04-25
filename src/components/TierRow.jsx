@@ -8,7 +8,7 @@ export default function TierRow({ id, label, color, items, allCards, isPool }) {
 
   return (
     <div
-      className={`flex items-stretch min-h-[100px] ${isPool ? "" : "border-b border-slate-700"}`}
+      className={`flex items-stretch min-h-[125px] ${isPool ? "" : "border-b border-slate-700"}`}
     >
       {!isPool && (
         <div
