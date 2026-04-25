@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   DndContext,
   closestCenter,
@@ -11,6 +11,7 @@ import {
 } from "@dnd-kit/core";
 import { arrayMove, sortableKeyboardCoordinates } from "@dnd-kit/sortable";
 import TierRow from "./TierRow";
+import { compressToHash, decompressFromHash } from "../utils/hash";
 
 const TIERS = [
   { id: "S", name: "S", color: "bg-red-500" },
@@ -129,48 +130,108 @@ export default function TierListApp({ initialCommanders }) {
     return closestCenter(args);
   };
 
+  // Load state from URL on mount
+  useEffect(() => {
+    const loadUrlState = async () => {
+      const hash = window.location.hash.slice(1);
+      if (!hash) return;
+
+      try {
+        const savedState = await decompressFromHash(hash);
+
+        // Safety check: ensure shared cards still exist in current config
+        const validIds = initialCommanders.map((c) => c.id);
+        const newState = { ...savedState };
+
+        // Filter out any IDs that no longer exist in our data
+        Object.keys(newState).forEach((tier) => {
+          newState[tier] = newState[tier].filter((id) => validIds.includes(id));
+        });
+
+        // Add any NEW commanders from config that weren't in the shared link
+        const currentIdsInState = Object.values(newState).flat();
+        const missingIds = validIds.filter(
+          (id) => !currentIdsInState.includes(id),
+        );
+        newState.unranked = [...newState.unranked, ...missingIds];
+
+        setItems(newState);
+      } catch (err) {
+        console.error("URL State is invalid or corrupted", err);
+      }
+    };
+
+    loadUrlState();
+  }, [initialCommanders]);
+
+  const handleShare = async () => {
+    try {
+      const hash = await compressToHash(items);
+      window.location.hash = hash;
+
+      await navigator.clipboard.writeText(window.location.href);
+      alert("Link copied! Share this URL to show your rankings.");
+    } catch (err) {
+      alert("Failed to generate share link.");
+    }
+  };
+
   const activeCard = initialCommanders.find((c) => c.id === activeId);
 
   return (
-    <DndContext
-      sensors={sensors}
-      collisionDetection={collisionDetectionStrategy}
-      onDragStart={handleDragStart}
-      onDragOver={handleDragOver}
-      onDragEnd={handleDragEnd}
-    >
-      <div className="flex flex-col gap-2">
-        {TIERS.map((tier) => (
+    <div className="space-y-6">
+      <div className="flex justify-between items-center bg-slate-800 p-4 rounded-xl shadow-inner">
+        <span className="text-slate-400 text-sm">
+          Drag to rank, click share to save.
+        </span>
+        <button
+          onClick={handleShare}
+          className="bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-2 rounded-lg font-bold shadow-lg transition-all active:scale-95"
+        >
+          Share URL
+        </button>
+      </div>
+
+      <DndContext
+        sensors={sensors}
+        collisionDetection={collisionDetectionStrategy}
+        onDragStart={handleDragStart}
+        onDragOver={handleDragOver}
+        onDragEnd={handleDragEnd}
+      >
+        <div className="flex flex-col gap-2">
+          {TIERS.map((tier) => (
+            <TierRow
+              key={tier.id}
+              id={tier.id}
+              label={tier.name}
+              color={tier.color}
+              items={items[tier.id]}
+              allCards={initialCommanders}
+            />
+          ))}
+        </div>
+
+        <div className="mt-12 p-4 bg-slate-800 rounded-lg">
+          <h2 className="text-xl mb-4">Unranked Commanders</h2>
           <TierRow
-            key={tier.id}
-            id={tier.id}
-            label={tier.name}
-            color={tier.color}
-            items={items[tier.id]}
+            id="unranked"
+            items={items.unranked}
             allCards={initialCommanders}
+            isPool
           />
-        ))}
-      </div>
+        </div>
 
-      <div className="mt-12 p-4 bg-slate-800 rounded-lg">
-        <h2 className="text-xl mb-4">Unranked Commanders</h2>
-        <TierRow
-          id="unranked"
-          items={items.unranked}
-          allCards={initialCommanders}
-          isPool
-        />
-      </div>
-
-      <DragOverlay>
-        {activeId && activeCard ? (
-          <img
-            src={activeCard?.image}
-            className="w-20 rounded shadow-2xl"
-            alt=""
-          />
-        ) : null}
-      </DragOverlay>
-    </DndContext>
+        <DragOverlay>
+          {activeId && activeCard ? (
+            <img
+              src={activeCard?.image}
+              className="w-20 rounded shadow-2xl"
+              alt=""
+            />
+          ) : null}
+        </DragOverlay>
+      </DndContext>
+    </div>
   );
 }
