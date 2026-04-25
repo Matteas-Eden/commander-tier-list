@@ -1,0 +1,176 @@
+import { useState } from "react";
+import {
+  DndContext,
+  closestCenter,
+  KeyboardSensor,
+  PointerSensor,
+  useSensor,
+  useSensors,
+  DragOverlay,
+  rectIntersection,
+} from "@dnd-kit/core";
+import { arrayMove, sortableKeyboardCoordinates } from "@dnd-kit/sortable";
+import TierRow from "./TierRow";
+
+const TIERS = [
+  { id: "S", name: "S", color: "bg-red-500" },
+  { id: "A", name: "A", color: "bg-orange-400" },
+  { id: "B", name: "B", color: "bg-yellow-400" },
+  { id: "C", name: "C", color: "bg-green-500" },
+];
+
+export default function TierListApp({ initialCommanders }) {
+  const [items, setItems] = useState({
+    S: [],
+    A: [],
+    B: [],
+    C: [],
+    unranked: initialCommanders.map((c) => c.id),
+  });
+  const [activeId, setActiveId] = useState(null);
+
+  // Helper to find which container an item is in
+  const findContainer = (id) => {
+    if (id in items) return id;
+    return Object.keys(items).find((key) => items[key].includes(id));
+  };
+
+  const sensors = useSensors(
+    useSensor(PointerSensor, {
+      activationConstraint: {
+        distance: 5, // Prevents accidental drags when clicking
+      },
+    }),
+    useSensor(KeyboardSensor, {
+      coordinateGetter: sortableKeyboardCoordinates,
+    }),
+  );
+
+  function handleDragStart(event) {
+    setActiveId(event.active.id);
+  }
+
+  function handleDragOver(event) {
+    const { active, over } = event;
+    const overId = over?.id;
+
+    // 1. If we aren't hovering over anything, or we're hovering over the same item, do nothing
+    if (!overId || active.id === overId) return;
+
+    const activeContainer = findContainer(active.id);
+    const overContainer = findContainer(overId);
+
+    // 2. Safety check: If we can't determine the containers, exit to prevent crashing
+    if (!activeContainer || !overContainer) return;
+
+    // 3. Only run this logic if we are moving from one tier/pool to a DIFFERENT one
+    if (activeContainer !== overContainer) {
+      setItems((prev) => {
+        const activeItems = prev[activeContainer];
+        const overItems = prev[overContainer];
+
+        // Find the indexes for the items
+        const activeIndex = activeItems.indexOf(active.id);
+        const overIndex = overItems.indexOf(overId);
+
+        let newIndex;
+        if (overId in prev) {
+          // We're hovering over the container background itself
+          newIndex = overItems.length + 1;
+        } else {
+          // We're hovering over a specific card in another container
+          const isBelowLastItem = over && activeIndex > overIndex;
+          const modifier = isBelowLastItem ? 1 : 0;
+          newIndex =
+            overIndex >= 0 ? overIndex + modifier : overItems.length + 1;
+        }
+
+        return {
+          ...prev,
+          // Remove from the old container
+          [activeContainer]: [
+            ...prev[activeContainer].filter((item) => item !== active.id),
+          ],
+          // Add to the new container at the calculated position
+          [overContainer]: [
+            ...prev[overContainer].slice(0, newIndex),
+            items[activeContainer][activeIndex],
+            ...prev[overContainer].slice(newIndex),
+          ],
+        };
+      });
+    }
+  }
+
+  function handleDragEnd(event) {
+    const { active, over } = event;
+    const activeContainer = findContainer(active.id);
+    const overContainer = findContainer(over?.id);
+
+    if (activeContainer && overContainer && active.id !== over.id) {
+      setItems((prev) => ({
+        ...prev,
+        [overContainer]: arrayMove(
+          prev[overContainer],
+          prev[overContainer].indexOf(active.id),
+          prev[overContainer].indexOf(over.id),
+        ),
+      }));
+    }
+    setActiveId(null);
+  }
+
+  const collisionDetectionStrategy = (args) => {
+    // 1. Try rectIntersection first (very stable for rows)
+    const rectCollisions = rectIntersection(args);
+    if (rectCollisions.length > 0) return rectCollisions;
+
+    // 2. Fallback to closestCenter if no direct intersection
+    return closestCenter(args);
+  };
+
+  const activeCard = initialCommanders.find((c) => c.id === activeId);
+
+  return (
+    <DndContext
+      sensors={sensors}
+      collisionDetection={collisionDetectionStrategy}
+      onDragStart={handleDragStart}
+      onDragOver={handleDragOver}
+      onDragEnd={handleDragEnd}
+    >
+      <div className="flex flex-col gap-2">
+        {TIERS.map((tier) => (
+          <TierRow
+            key={tier.id}
+            id={tier.id}
+            label={tier.name}
+            color={tier.color}
+            items={items[tier.id]}
+            allCards={initialCommanders}
+          />
+        ))}
+      </div>
+
+      <div className="mt-12 p-4 bg-slate-800 rounded-lg">
+        <h2 className="text-xl mb-4">Unranked Commanders</h2>
+        <TierRow
+          id="unranked"
+          items={items.unranked}
+          allCards={initialCommanders}
+          isPool
+        />
+      </div>
+
+      <DragOverlay>
+        {activeId && activeCard ? (
+          <img
+            src={activeCard?.image}
+            className="w-20 rounded shadow-2xl"
+            alt=""
+          />
+        ) : null}
+      </DragOverlay>
+    </DndContext>
+  );
+}
