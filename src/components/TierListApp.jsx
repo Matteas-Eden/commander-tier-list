@@ -179,18 +179,13 @@ export default function TierListApp({ initialCommanders }) {
   const activeCard = initialCommanders.find((c) => c.id === activeId);
 
   return (
-    <div className="space-y-6">
-      <div className="flex justify-between items-center bg-slate-800 p-4 rounded-xl shadow-inner">
-        <span className="text-slate-400 text-sm">
-          Drag to rank, click share to save.
-        </span>
-        <button
-          onClick={handleShare}
-          className="bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-2 rounded-lg font-bold shadow-lg transition-all active:scale-95"
-        >
-          Share URL
-        </button>
-      </div>
+    <div className="flex flex-col gap-4 justify-center">
+      <button
+        onClick={handleShare}
+        className="bg-indigo-600 hover:bg-indigo-500 text-white m-auto px-6 py-2 rounded-lg font-bold transition-all active:scale-95"
+      >
+        Save and Share
+      </button>
 
       <DndContext
         sensors={sensors}
@@ -200,26 +195,27 @@ export default function TierListApp({ initialCommanders }) {
         onDragEnd={handleDragEnd}
       >
         <div className="flex flex-col gap-2">
-          {TIERS.map((tier) => (
-            <TierRow
-              key={tier.id}
-              id={tier.id}
-              label={tier.name}
-              color={tier.color}
-              items={items[tier.id]}
-              allCards={initialCommanders}
-            />
-          ))}
-        </div>
+          <div className="flex flex-col gap-2">
+            {TIERS.map((tier) => (
+              <TierRow
+                key={tier.id}
+                id={tier.id}
+                label={tier.name}
+                color={tier.color}
+                items={items[tier.id]}
+                allCards={initialCommanders}
+              />
+            ))}
+          </div>
 
-        <div className="mt-12 p-4 bg-slate-800 rounded-lg">
-          <h2 className="text-xl mb-4">Unranked Commanders</h2>
-          <TierRow
-            id="unranked"
-            items={items.unranked}
-            allCards={initialCommanders}
-            isPool
-          />
+          <div className="bg-slate-800 rounded-lg">
+            <TierRow
+              id="unranked"
+              items={items.unranked}
+              allCards={initialCommanders}
+              isPool
+            />
+          </div>
         </div>
 
         <DragOverlay>

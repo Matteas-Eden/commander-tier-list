@@ -53,15 +53,14 @@ const commanders = data.data.map((card: Card) => {
 
 <Layout title="Astro MTG Tier List">
   <main
-    class="p-8 min-h-screen bg-[radial-gradient(ellipse_at_top,var(--tw-gradient-stops))] from-slate-900 via-purple-900/20 to-black text-white bg-slate-800"
+    class="px-8 py-4 min-h-screen bg-[radial-gradient(ellipse_at_top,var(--tw-gradient-stops))] from-slate-900 via-purple-900/20 to-black text-white bg-slate-800"
   >
-    <header class="mb-12 text-center">
+    <header class="mb-4 text-center">
       <h1
         class="text-5xl font-black tracking-tighter text-transparent bg-clip-text bg-linear-to-r from-purple-400 to-pink-600"
       >
         Commander Tier List
       </h1>
-      <p class="text-slate-400 mt-2">Ranking the stars of the Multiverse</p>
     </header>
 
     <TierListApp client:load initialCommanders={commanders} />
