@@ -170,7 +170,9 @@ export default function TierListApp({ initialCommanders }) {
       window.location.hash = hash;
 
       await navigator.clipboard.writeText(window.location.href);
-      alert("Link copied! Share this URL to show your rankings.");
+      alert(
+        `Link copied! Share this URL to show your rankings: ${window.location.href}`,
+      );
     } catch (err) {
       alert("Failed to generate share link.");
     }
