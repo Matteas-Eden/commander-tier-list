@@ -18,6 +18,7 @@ const TIERS = [
   { id: "A", name: "A", color: "bg-orange-400" },
   { id: "B", name: "B", color: "bg-yellow-400" },
   { id: "C", name: "C", color: "bg-green-500" },
+  { id: "D", name: "D", color: "bg-blue-500" },
 ];
 
 export default function TierListApp({ initialCommanders }) {
@@ -26,6 +27,7 @@ export default function TierListApp({ initialCommanders }) {
     A: [],
     B: [],
     C: [],
+    D: [],
     unranked: initialCommanders.map((c) => c.id),
   });
   const [activeId, setActiveId] = useState(null);
