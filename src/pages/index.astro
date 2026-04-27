@@ -3,17 +3,6 @@ import Layout from "../layouts/Layout.astro";
 import TierListApp from "../components/TierListApp.jsx";
 import commanderConfig from "../data/commanders.json";
 
-// Prepare the request for Scryfall's collection endpoint
-const identifiers = commanderConfig.map((c) => ({ id: c.scryfallId }));
-
-const response = await fetch("https://api.scryfall.com/cards/collection", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({ identifiers }),
-});
-
-const data = await response.json();
-
 type Card = {
   id: string;
   name: string;
@@ -31,18 +20,29 @@ type Card = {
   ];
 };
 
+// Prepare the request for Scryfall's collection endpoint
+const identifiers = commanderConfig.map((c) => ({ id: c.scryfallId }));
+
+const response = await fetch("https://api.scryfall.com/cards/collection", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ identifiers }),
+});
+
+const data = await response.json();
+
 // Map the API data back to the format your React component expects
-const commanders = data.data.map((card: Card) => {
+const commanders: Card[] = data.data.map((card: Card) => {
   if (card.card_faces?.length) {
     return {
-      id: card.id,
+      id: commanderConfig.find((c) => c.scryfallId === card.id)?.id,
       name: card.name,
       // We use 'normal' size for better quality in the tier list
       image: card.card_faces[0].image_uris?.normal || card.image_uris?.small,
     };
   } else {
     return {
-      id: card.id,
+      id: commanderConfig.find((c) => c.scryfallId === card.id)?.id,
       name: card.name,
       // We use 'normal' size for better quality in the tier list
       image: card.image_uris?.normal || card.image_uris?.small,

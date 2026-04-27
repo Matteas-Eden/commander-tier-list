@@ -1,89 +1,111 @@
 [
   {
+    "id": 1,
     "name": "Vadrik, Astral Archmage",
     "scryfallId": "454666bb-f81d-4845-84aa-d6f8f80ce86a"
   },
   {
+    "id": 2,
     "name": "Aminatou, Veil Piercer",
     "scryfallId": "9f868023-6035-403d-ba91-7a4840c6c392"
   },
   {
+    "id": 3,
     "name": "Will Kenrith",
     "scryfallId": "406a3ae5-f57e-40ff-8eac-a01781f2329f"
   },
   {
+    "id": 4,
     "name": "Voja, Jaws of the Conclave",
     "scryfallId": "bfa1bd2f-25bd-4fbd-877b-cef00ab7f92f"
   },
   {
+    "id": 5,
     "name": "Noctis Lucis Caelum",
     "scryfallId": "d51b956a-acca-4aee-92ff-bd90a9814988"
   },
   {
+    "id": 6,
     "name": "Ardyn Izunia",
     "scryfallId": "e6628dee-54b1-4e04-90b2-3b327a2de090"
   },
   {
+    "id": 7,
     "name": "Asmoranomardicadaistinaculdacar",
     "scryfallId": "d99a9a7d-d9ca-4c11-80ab-e39d5943a315"
   },
   {
+    "id": 8,
     "name": "Azami, Lady of Scrolls",
     "scryfallId": "fa727656-fb33-485b-9378-18b80cad42b9"
   },
   {
+    "id": 9,
     "name": "Baeloth Barrityl, Entertainer",
     "scryfallId": "06c1e006-77bf-4adb-bb65-23262edfaf6d"
   },
   {
+    "id": 10,
     "name": "Bilbo, Birthday Celebrant",
     "scryfallId": "4cf6c13b-d898-4066-b006-9a7fa896d55a"
   },
   {
+    "id": 11,
     "name": "Bruvac the Grandiloquent",
     "scryfallId": "4c973008-913d-4e9f-8a99-37b748cb996b"
   },
   {
+    "id": 12,
     "name": "Commodore Guff",
     "scryfallId": "92870fc6-a6bc-4198-bb31-397e07e0e835"
   },
   {
+    "id": 13,
     "name": "Elminster",
     "scryfallId": "06700514-b19c-4fc8-beb1-2c801f320b25"
   },
   {
+    "id": 14,
     "name": "Loot, Exuberant Explorer",
     "scryfallId": "73ce9555-a687-4a37-864c-eb59b1e80a8f"
   },
   {
+    "id": 15,
     "name": "Melek, Reforged Researcher",
     "scryfallId": "01c5ede0-a098-4f21-8b7e-795a83e75aae"
   },
   {
+    "id": 16,
     "name": "Meren of Clan Nel Toth",
     "scryfallId": "4a7ef286-666f-4a35-9d3f-12a0e888e35a"
   },
   {
+    "id": 17,
     "name": "Niv-Mizzet, Visionary",
     "scryfallId": "666749f4-3481-424b-9f18-37763ebf769a"
   },
   {
+    "id": 18,
     "name": "Saruman of Many Colors",
     "scryfallId": "eb7fc17a-00e6-48f2-a1b9-970d7720f87d"
   },
   {
+    "id": 19,
     "name": "Stella Lee, Wild Card",
     "scryfallId": "2a8a7696-b5d9-4378-9d5c-2c9007e4df63"
   },
   {
+    "id": 20,
     "name": "Tamiyo, Inquisitive Student",
     "scryfallId": "2a717b98-cdac-416d-bf6c-f6b6638e65d1"
   },
   {
+    "id": 21,
     "name": "Wyll, Blade of Frontiers",
     "scryfallId": "6589fdaa-9a0c-4bee-b991-38977255f0d5"
   },
   {
+    "id": 22,
     "name": "Yorion, Sky Nomad",
     "scryfallId": "0ff8e7a9-2ce2-44a1-9671-70dbd46228b3"
   }
