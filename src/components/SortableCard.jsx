@@ -24,7 +24,7 @@ export default function SortableCard({ id, card }) {
       style={style}
       {...attributes}
       {...listeners}
-      className="w-20 aspect-3/4 overflow-hidden rounded hover:ring-2 ring-blue-500 transition-all"
+      className="w-20 aspect-3/4 overflow-hidden rounded hover:ring-2 ring-ctp-blue-500 transition-all"
     >
       <img
         src={card.image}

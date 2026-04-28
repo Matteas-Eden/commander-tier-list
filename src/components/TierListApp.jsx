@@ -14,11 +14,11 @@ import TierRow from "./TierRow";
 import { compressToHash, decompressFromHash } from "../utils/hash";
 
 const TIERS = [
-  { id: "S", name: "S", color: "bg-red-500" },
-  { id: "A", name: "A", color: "bg-orange-400" },
-  { id: "B", name: "B", color: "bg-yellow-400" },
-  { id: "C", name: "C", color: "bg-green-500" },
-  { id: "D", name: "D", color: "bg-blue-500" },
+  { id: "S", name: "S", color: "bg-ctp-green" },
+  { id: "A", name: "A", color: "bg-ctp-blue" },
+  { id: "B", name: "B", color: "bg-ctp-mauve" },
+  { id: "C", name: "C", color: "bg-ctp-red" },
+  { id: "D", name: "D", color: "bg-ctp-peach" },
 ];
 
 export default function TierListApp({ initialCommanders }) {
@@ -186,7 +186,7 @@ export default function TierListApp({ initialCommanders }) {
     <div className="flex flex-col gap-4 justify-center">
       <button
         onClick={handleShare}
-        className="bg-indigo-600 hover:bg-indigo-500 text-white m-auto px-6 py-2 rounded-lg font-bold transition-all active:scale-95"
+        className="bg-ctp-peach hover:bg-ctp-yellow text-ctp-white m-auto px-6 py-2 rounded-lg font-bold transition-all active:scale-95"
       >
         Save and Share
       </button>
@@ -212,14 +212,12 @@ export default function TierListApp({ initialCommanders }) {
             ))}
           </div>
 
-          <div className="bg-slate-800 rounded-lg">
-            <TierRow
-              id="unranked"
-              items={items.unranked}
-              allCards={initialCommanders}
-              isPool
-            />
-          </div>
+          <TierRow
+            id="unranked"
+            items={items.unranked}
+            allCards={initialCommanders}
+            isPool
+          />
         </div>
 
         <DragOverlay>
