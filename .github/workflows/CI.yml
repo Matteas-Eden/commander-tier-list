@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - "**.md"
+      - "LICENSE"
+  workflow_dispatch:
+
+jobs:
+  dispatch:
+    name: Trigger redeploy on CD pipeline
+    runs-on: ubuntu-latest
+    needs: publish
+
+    env:
+      APP_NAME: "divination.nz"
+      POD_NAME: "commander-tier-list"
+
+    steps:
+      - name: Dispatch CI event
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.PAT }}
+          repository: ${{ secrets.TARGET_REPO }}
+          event-type: ci-dispatch
+          client-payload: '{"ref": "${{ github.ref }}", "repository": "${{ github.repository }}", "app": "${{ env.APP_NAME }}", "pod": "${{ env.POD_NAME }}"}'
