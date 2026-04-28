@@ -108,5 +108,175 @@
     "id": 22,
     "name": "Yorion, Sky Nomad",
     "scryfallId": "0ff8e7a9-2ce2-44a1-9671-70dbd46228b3"
+  },
+  {
+    "id": 23,
+    "name": "Admiral Beckett Brass",
+    "scryfallId": "02cbd397-3ef3-465f-84fe-765dd1444af8"
+  },
+  {
+    "id": 24,
+    "name": "Admiral Brass, the Unsinkable",
+    "scryfallId": "bdc2d492-9d1e-4543-8b9c-c66ee67992ce"
+  },
+  {
+    "id": 25,
+    "name": "Anowon, the Ruin Thief",
+    "scryfallId": "bca84fc4-4710-44c8-b90a-73ef888714d8"
+  },
+  {
+    "id": 26,
+    "name": "Atraxa, Praetor's Voice",
+    "scryfallId": "d0d33d52-3d28-4635-b985-51e126289259"
+  },
+  {
+    "id": 27,
+    "name": "Derevi, Empyrial Tactician",
+    "scryfallId": "3d61a4d4-f0d5-4bc4-8977-57bbb3d97776"
+  },
+  {
+    "id": 28,
+    "name": "Dynaheir, Invoker Adept",
+    "scryfallId": "c301b389-d802-4a8b-8681-9b50c8667423"
+  },
+  {
+    "id": 29,
+    "name": "Esix, Fractal Bloom",
+    "scryfallId": "2e390f8e-1dd5-4383-83f5-45f20f18d410"
+  },
+  {
+    "id": 30,
+    "name": "Estrid, the Masked",
+    "scryfallId": "3340b83e-72dc-42e2-9f93-92f732c047df"
+  },
+  {
+    "id": 31,
+    "name": "Ezuri, Renegade Leader",
+    "scryfallId": "8a448dbf-08a1-4145-a4b2-0265cc9f2e53"
+  },
+  {
+    "id": 32,
+    "name": "General Tazri",
+    "scryfallId": "34e9aa86-1a31-4c0f-928d-923f066286b6"
+  },
+  {
+    "id": 33,
+    "name": "Ghired, Conclave Exile",
+    "scryfallId": "d0825bcd-8cf8-498a-a61e-406f136e1f3f"
+  },
+  {
+    "id": 34,
+    "name": "Gisa, Glorious Resurrector",
+    "scryfallId": "63461076-a13d-488d-bd82-ceac441341c8"
+  },
+  {
+    "id": 35,
+    "name": "Godo, Bandit Warlord",
+    "scryfallId": "fcff0b92-edd0-4197-965b-3fd86bc884d8"
+  },
+  {
+    "id": 36,
+    "name": "Hapatra, Vizier of Poisons",
+    "scryfallId": "56fbbcc9-db23-4902-b0f7-cea78a2a36af"
+  },
+  {
+    "id": 37,
+    "name": "Inquisitor Greyfax",
+    "scryfallId": "1956cebe-bb71-45cc-b4ff-72ee3bb95c81"
+  },
+  {
+    "id": 38,
+    "name": "Kaalia, Zenith Seeker",
+    "scryfallId": "1f400655-f495-4b21-ab9e-57fe4d845d45"
+  },
+  {
+    "id": 39,
+    "name": "Kenrith, the Returned King",
+    "scryfallId": "56c1227e-bea7-47cb-bbec-389a3d585af5"
+  },
+  {
+    "id": 40,
+    "name": "Lonis, Cryptozoologist",
+    "scryfallId": "5dfd08da-6717-49ee-94ba-2562224f5baa"
+  },
+  {
+    "id": 41,
+    "name": "Muldrotha, the Gravetide",
+    "scryfallId": "c4125bb0-b104-438e-a6a2-97f9d141243c"
+  },
+  {
+    "id": 42,
+    "name": "Niv-Mizzet, Parun",
+    "scryfallId": "6f3d2dc5-7b9d-4af6-9f3b-4de90fbf63c9"
+  },
+  {
+    "id": 43,
+    "name": "Norin the Wary",
+    "scryfallId": "f61ea59a-1db0-4e6b-bcde-19787c76a49b"
+  },
+  {
+    "id": 44,
+    "name": "Obuun, Mul Daya Ancestor",
+    "scryfallId": "8319b155-0fba-4d30-9481-bf01afbd3457"
+  },
+  {
+    "id": 45,
+    "name": "Omnath, Locus of the Roil",
+    "scryfallId": "cb53a29d-2de2-4874-a6f3-0fecbfa14cf2"
+  },
+  {
+    "id": 46,
+    "name": "Prossh, Skyraider of Kher",
+    "scryfallId": "fc411c52-3ee2-4fe4-983d-3fa43b516237"
+  },
+  {
+    "id": 47,
+    "name": "Raggadragga, Goreguts Boss",
+    "scryfallId": "1166ce2a-4e0b-4a57-929d-566f461a6282"
+  },
+  {
+    "id": 48,
+    "name": "Roon of the Hidden Realm",
+    "scryfallId": "dfd7e77a-bfc0-4d8c-b6fd-a190d9ecf3cf"
+  },
+  {
+    "id": 49,
+    "name": "Saheeli, the Gifted",
+    "scryfallId": "ca095559-ac77-4186-8d9b-b75ce0607582"
+  },
+  {
+    "id": 50,
+    "name": "Sigarda, Font of Blessings",
+    "scryfallId": "cba71725-d6df-44d7-a93b-934573759711"
+  },
+  {
+    "id": 51,
+    "name": "Sythis, Harvest's Hand",
+    "scryfallId": "0babfe00-9bad-48fc-b3b1-df8280242fd2"
+  },
+  {
+    "id": 52,
+    "name": "Teysa Karlov",
+    "scryfallId": "bcfaa19e-995e-447d-a0a2-46e5d117d5ec"
+  },
+  {
+    "id": 53,
+    "name": "Teysa, Orzhov Scion",
+    "scryfallId": "783a4c53-c006-46d7-bca6-cd9e12f0da13"
+  },
+  {
+    "id": 54,
+    "name": "Unesh, Criosphinx Sovereign",
+    "scryfallId": "fdd1a8b2-f4ba-45af-9586-98a98834b8bc"
+  },
+  {
+    "id": 55,
+    "name": "Xyris, the Writhing Storm",
+    "scryfallId": "af0db1d6-5cb1-4917-8e8f-69d5dc184404"
+  },
+  {
+    "id": 56,
+    "name": "Zada, Hedron Grinder",
+    "scryfallId": "d582b933-adbe-4706-a3c9-c19b6c52fd72"
   }
 ]
