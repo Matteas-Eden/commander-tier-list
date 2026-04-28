@@ -278,5 +278,50 @@
     "id": 56,
     "name": "Zada, Hedron Grinder",
     "scryfallId": "d582b933-adbe-4706-a3c9-c19b6c52fd72"
+  },
+  {
+    "id": 57,
+    "name": "Grunn, the Lonely King",
+    "scryfallId": "b6a9aa5c-1501-4958-872a-39c512514033"
+  },
+  {
+    "id": 58,
+    "name": "Yuriko, the Tiger's Shadow",
+    "scryfallId": "3bd81ae6-e628-447a-a36b-597e63ede295"
+  },
+  {
+    "id": 59,
+    "name": "Kalemne, Disciple of Iroas",
+    "scryfallId": "c049d734-cb1c-4c38-b276-7e5ac9c81254"
+  },
+  {
+    "id": 60,
+    "name": "Zurgo Helmsmasher",
+    "scryfallId": "13f4bafe-0d21-47ba-8f16-0274107d618c"
+  },
+  {
+    "id": 61,
+    "name": "Nicol Bolas, the Ravager",
+    "scryfallId": "7b215968-93a6-4278-ac61-4e3e8c3c3943"
+  },
+  {
+    "id": 62,
+    "name": "Suki, Kyoshi Warrior",
+    "scryfallId": "3e311480-04f8-4b8f-938e-1cc6d06b9902"
+  },
+  {
+    "id": 63,
+    "name": "Sliver Gravemother",
+    "scryfallId": "9f5d253e-9eb2-423c-90ee-68f27ec6bf88"
+  },
+  {
+    "id": 64,
+    "name": "Urza, Chief Artificer",
+    "scryfallId": "ea409050-4296-4b76-a6cd-2896ce1b88e4"
+  },
+  {
+    "id": 65,
+    "name": "Kadena, Slinking Sorcerer",
+    "scryfallId": "68a144f1-df18-4dc5-81c3-dff2af27527f"
   }
 ]
