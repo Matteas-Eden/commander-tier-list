@@ -13,7 +13,6 @@ jobs:
   dispatch:
     name: Trigger redeploy on CD pipeline
     runs-on: ubuntu-latest
-    needs: publish
 
     env:
       APP_NAME: "divination.nz"
