@@ -304,6 +304,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@catppuccin/tailwindcss@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "@catppuccin/tailwindcss@npm:1.0.0"
+  checksum: 10c0/13dd106828f033f02da1d9037c9c8887810edb858909806c33587f4787d79f4fe68aeb7f8ef7882db33fbba2a20d7777a66b73f6dd420b8691e78e4828335dd1
+  languageName: node
+  linkType: hard
+
 "@clack/core@npm:1.2.0":
   version: 1.2.0
   resolution: "@clack/core@npm:1.2.0"
@@ -3757,6 +3764,7 @@ __metadata:
   resolution: "root-workspace-0b6124@workspace:."
   dependencies:
     "@astrojs/react": "npm:^5.0.4"
+    "@catppuccin/tailwindcss": "npm:^1.0.0"
     "@dnd-kit/core": "npm:^6.3.1"
     "@dnd-kit/sortable": "npm:^10.0.0"
     "@dnd-kit/utilities": "npm:^3.2.2"
