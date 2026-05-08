@@ -323,5 +323,95 @@
     "id": 65,
     "name": "Kadena, Slinking Sorcerer",
     "scryfallId": "68a144f1-df18-4dc5-81c3-dff2af27527f"
+  },
+  {
+    "id": 66,
+    "name": "Clive, Ifrit's Dominant",
+    "scryfallId": "425d5bea-9c9a-4e8a-b4bc-02284fb9b5b4"
+  },
+  {
+    "id": 67,
+    "name": "Clive Rosfield",
+    "scryfallId": "958077e8-a226-4cb5-839f-35557051c953"
+  },
+  {
+    "id": 68,
+    "name": "Zhulodok, Void Gorger",
+    "scryfallId": "a015461d-4214-4feb-8b04-519c537759eb"
+  },
+  {
+    "id": 69,
+    "name": "Gishath, Sun's Avatar",
+    "scryfallId": "7335e500-342d-476d-975c-817512e6e3d6"
+  },
+  {
+    "id": 70,
+    "name": "The First Sliver",
+    "scryfallId": "c4e9d8d2-d9f3-4a6f-a2d0-e5b0e2f1d1c8"
+  },
+  {
+    "id": 71,
+    "name": "Shelob, Child of Ungoliant",
+    "scryfallId": "a14c4b29-3363-45ce-9190-0f79e1a0ef7f"
+  },
+  {
+    "id": 72,
+    "name": "The Prismatic Bridge (Esika)",
+    "scryfallId": "f6cd7465-9dd0-473c-ac5e-dd9e2f22f5f6"
+  },
+  {
+    "id": 73,
+    "name": "Lord Windgrace",
+    "scryfallId": "213d6fb8-5624-4804-b263-51f339482754"
+  },
+  {
+    "id": 74,
+    "name": "Narset, Enlightened Exile",
+    "scryfallId": "827ecc44-0b00-4515-8953-bc91fa03705a"
+  },
+  {
+    "id": 75,
+    "name": "Rograkh, Son of Rohgahh",
+    "scryfallId": "a4fab67f-00c2-4125-9262-d21a29411797"
+  },
+  {
+    "id": 76,
+    "name": "Ashling, the Limitless",
+    "scryfallId": "5924c01f-2815-4e37-b700-3ba6cc81e0e4"
+  },
+  {
+    "id": 77,
+    "name": "Athreos, God of Passage",
+    "scryfallId": "52705c53-883e-4b6a-9c08-3fa35f6f17d5"
+  },
+  {
+    "id": 78,
+    "name": "Magus Lucea Kane",
+    "scryfallId": "419ac203-d8b9-46df-99a8-65dfcea07ff5"
+  },
+  {
+    "id": 79,
+    "name": "The Ur-Dragon",
+    "scryfallId": "10d42b35-844f-4a64-9981-c6118d45e826"
+  },
+  {
+    "id": 80,
+    "name": "Nethroi, Apex of Death",
+    "scryfallId": "ba04c102-e4c1-43a8-9c2f-d1f3c9bf5edf"
+  },
+  {
+    "id": 81,
+    "name": "Hashaton, Scarab's Fist",
+    "scryfallId": "02645651-cd55-4bd0-8a4d-fa257270a0e0"
+  },
+  {
+    "id": 82,
+    "name": "Nekusar, the Mindrazer",
+    "scryfallId": "3f7f2417-12de-4e57-9714-d878880a1208"
+  },
+  {
+    "id": 83,
+    "name": "Obeka. Splitter of Seconds",
+    "scryfallId": "183b8c06-62ab-41e8-82c1-f23066d832ee"
   }
 ]
