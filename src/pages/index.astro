@@ -20,35 +20,84 @@ type Card = {
   ];
 };
 
-// Prepare the request for Scryfall's collection endpoint
-const identifiers = commanderConfig.map((c) => ({ id: c.scryfallId }));
+type CommanderCard = {
+  id: number;
+  name: string;
+  image: string | undefined;
+};
 
-const response = await fetch("https://api.scryfall.com/cards/collection", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({ identifiers }),
+const identifiers = commanderConfig.map((c) => ({ id: c.scryfallId }));
+const CHUNK_SIZE = 75;
+
+// 1. Create the chunks
+const chunks = [];
+for (let i = 0; i < identifiers.length; i += CHUNK_SIZE) {
+  chunks.push(identifiers.slice(i, i + CHUNK_SIZE));
+}
+
+// 2. Map chunks to fetch promises
+const requestPromises = chunks.map(async (chunk, index) => {
+  // Optional: Stagger the start of each request by 100ms
+  // to stay in Scryfall's good graces.
+  await new Promise((resolve) => setTimeout(resolve, index * 100));
+
+  const response = await fetch("https://api.scryfall.com/cards/collection", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ identifiers: chunk }),
+  });
+
+  if (!response.ok) {
+    throw new Error(`Scryfall API error: ${response.status}`);
+  }
+
+  return response.json();
 });
 
-const data = await response.json();
+// 3. Wait for all requests to finish
+const results = await Promise.allSettled(requestPromises);
 
-// Map the API data back to the format your React component expects
-const commanders: Card[] = data.data.map((card: Card) => {
-  if (card.card_faces?.length) {
-    return {
-      id: commanderConfig.find((c) => c.scryfallId === card.id)?.id,
-      name: card.name,
-      // We use 'normal' size for better quality in the tier list
-      image: card.card_faces[0].image_uris?.normal || card.image_uris?.small,
-    };
+// 4. Process the successful results
+const allCards: Card[] = results.flatMap((result) => {
+  if (result.status === "fulfilled") {
+    // result.value is the JSON data returned from the successful fetch
+    return result.value.data;
   } else {
-    return {
-      id: commanderConfig.find((c) => c.scryfallId === card.id)?.id,
-      name: card.name,
-      // We use 'normal' size for better quality in the tier list
-      image: card.image_uris?.normal || card.image_uris?.small,
-    };
+    // Log the error for the specific chunk that failed
+    console.error("A chunk failed to fetch:", result.reason);
+    return []; // Return an empty array so flatMap simply skips this chunk
   }
 });
+
+// 5. Map the API data back to the CommanderCard format
+const commanders: CommanderCard[] = allCards
+  .map((card: Card) => {
+    const commanderId = commanderConfig.find(
+      (c) => c.scryfallId === card.id,
+    )?.id;
+
+    if (!commanderId) {
+      console.error(`Could not find commander ID for ${card.name}`);
+      return null;
+    }
+
+    if (card.card_faces?.length) {
+      return {
+        id: commanderId,
+        name: card.name,
+        // We use 'normal' size for better quality in the tier list
+        image: card.card_faces[0].image_uris?.normal || card.image_uris?.small,
+      };
+    } else {
+      return {
+        id: commanderId,
+        name: card.name,
+        // We use 'normal' size for better quality in the tier list
+        image: card.image_uris?.normal || card.image_uris?.small,
+      };
+    }
+  })
+  .filter((c): c is CommanderCard => c !== null);
 ---
 
 <Layout title="Commander Tier List">
