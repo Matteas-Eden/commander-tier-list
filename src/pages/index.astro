@@ -43,12 +43,25 @@ const requestPromises = chunks.map(async (chunk, index) => {
 
   const response = await fetch("https://api.scryfall.com/cards/collection", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+      "User-Agent": "CommanderTierList/1.0",
+    },
     body: JSON.stringify({ identifiers: chunk }),
   });
 
   if (!response.ok) {
-    throw new Error(`Scryfall API error: ${response.status}`);
+    let errorDetails = "";
+    try {
+      // Scryfall usually returns a JSON object with a "details" field on error
+      const errorJson = await response.json();
+      errorDetails = errorJson.details || JSON.stringify(errorJson);
+    } catch (e) {
+      // Fallback if the response body isn't valid JSON
+      errorDetails = await response.text();
+    }
+
+    throw new Error(`Scryfall API error [${response.status}]: ${errorDetails}`);
   }
 
   return response.json();
